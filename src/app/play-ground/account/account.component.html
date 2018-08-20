@@ -1,0 +1,46 @@
+<div class="row text-center mb-2">
+  <div class="col-12">
+    <h4 style="display: inline-block; margin-right: 20px;">Game account</h4> 
+    <button type="button" (click)="startNewSet()">New set of games</button>
+  </div>
+</div>
+<div class="row text-center">
+  <div class="col-4">
+    <p>{{xPlayerName}}
+      <br>
+      <span style="font-size: 50px; font-weight: 500;">
+        {{xPlayerCount}}
+      </span>
+    </p>
+  </div>
+
+  <div class="col-4">
+    <p>{{oPlayerName}}
+      <br>
+      <span style="font-size: 50px; font-weight: 500;">
+        {{oPlayerCount}}
+      </span>
+    </p>
+  </div>
+
+  <div class="col-4">
+      <p>draw
+        <br>
+        <span style="font-size: 50px; font-weight: 500;">
+          {{drawCount}}
+        </span>
+      </p>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <h3>{{winner}}</h3>
+    <ol *ngIf="accountEntries">
+      <li *ngFor="let entry of accountEntries">
+        <span *ngIf="entry && entry !== 'draw'">game win: {{entry}}</span>
+        <span *ngIf="entry === 'draw'">game is played in a draw</span>
+      </li>
+    </ol>
+  </div>
+</div>

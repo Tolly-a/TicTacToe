@@ -1,0 +1,20 @@
+  <div class="row mb-3">
+    <div class="col-12">
+      <div [ngClass]="(statusSubject === 'draw') ? 'draw' : ''" 
+            class="board-row" 
+            *ngFor="let row of ['','' ,''];  let i = index">
+        <app-square *ngFor="let col of ['','','']; let j = index" 
+                    [positionSquare]="squares[j + i * 3]" 
+                    [ngClass]=" (j + i * 3 === winSquare_1 || j + i * 3 === winSquare_2 || j + i * 3 === winSquare_3) ? 'win-square': ''"
+                    (click)="move(j + i * 3)">
+        </app-square>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5"> {{status}} </div>
+    <div class="col-5">
+      <button type="button" (click)="newGame()">New Game</button>
+    </div>
+  </div>

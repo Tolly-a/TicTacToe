@@ -1,0 +1,51 @@
+<div *ngIf="!onGameStart;  else playGround">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h5>Player names</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <form class="form" #playersForm="ngForm" (ngSubmit)="registerPlayers()">
+        
+        <div class="form-group mb-2 row">
+          <label for="xPlayer"class="col-1 pt-2">X</label>
+          <input type="text"  
+                class="form-control col-5"
+                ngModel
+                name="xPlayer" 
+                id="xPlayer" 
+                required 
+                #xPlayer="ngModel" />
+          <span class="col-3 pt-1" *ngIf="xPlayer.invalid && xPlayer.touched" style="color:red">Required</span>
+        </div>
+        
+        <div class="form-group mb-3 row">
+          <label for="oPlayer" class="col-1 pt-2">O</label>
+          <input type="text" 
+                class="form-control col-5" 
+                ngModel
+                name="oPlayer" 
+                id="oPlayer" 
+                required 
+                #oPlayer="ngModel" />
+          <span class="col-3 pt-1" *ngIf="oPlayer.invalid && oPlayer.touched" style="color:red">Required</span>
+        </div>
+
+        <button [disabled]="!playersForm.valid" class="btn btn-succes" type="submit">Start Game</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #playGround>
+  <div class="row">
+    <div class="col-5">
+      <app-board [xPlayer]="xPlayer" [oPlayer]="oPlayer"></app-board>
+    </div>
+    <div class="col-5">
+      <app-account [xPlayer]="xPlayer" [oPlayer]="oPlayer"></app-account>
+    </div>
+  </div>
+</ng-template>

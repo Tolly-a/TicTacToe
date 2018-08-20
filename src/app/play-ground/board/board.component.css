@@ -1,0 +1,11 @@
+.board-row{
+    clear: both;
+    min-width: 303px;
+}
+
+.win-square{
+    color: #E04B4B;
+}
+.draw{
+    color: #afafaf;
+}
